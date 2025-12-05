@@ -30,7 +30,7 @@ defmodule BinarySearch do
   defp binary_search(_, _, {low, high}) when low > high, do: :not_found
 
   defp binary_search(numbers, key, {low, high}) do
-    mid = (low + high) |> div(2)
+    mid = low + ((high - low) |> div(2))
     n = numbers |> elem(mid)
 
     cond do
