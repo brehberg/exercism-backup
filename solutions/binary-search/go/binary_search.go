@@ -11,7 +11,7 @@ func subSearchInts(list []int, key, low, high int) int {
 		return -1
 	}
 
-	mid := (low + high) / 2
+	mid := low + (high-low)/2
 	if list[mid] > key {
 		return subSearchInts(list, key, low, mid-1)
 	} else if list[mid] < key {
