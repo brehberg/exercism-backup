@@ -8,11 +8,11 @@ def rebase(input_base: int, digits: list[int], output_base: int) -> list[int]:
 
     # convert sequence of digits in input base to whole integer value
     value = 0
-    for d in digits:
-        if d < 0 or d >= input_base:
+    for digit in digits:
+        if digit < 0 or digit >= input_base:
             raise ValueError("all digits must satisfy 0 <= d < input base")
         value *= input_base
-        value += d
+        value += digit
 
     # convert whole integer value to sequence of digits in output base
     result = []
