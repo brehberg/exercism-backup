@@ -7,14 +7,12 @@ def rebase(input_base: int, digits: list[int], output_base: int) -> list[int]:
         raise ValueError("output base must be >= 2")
 
     # convert sequence of digits in input base to whole integer value
-    positional_offset = len(digits) - 1
-
-    def positional_value(digit: int, index: int):
-        if digit < 0 or digit >= input_base:
+    value = 0
+    for d in digits:
+        if d < 0 or d >= input_base:
             raise ValueError("all digits must satisfy 0 <= d < input base")
-        return digit * input_base ** (positional_offset - index)
-
-    value = sum(positional_value(d, i) for i, d in enumerate(digits))
+        value *= input_base
+        value += d
 
     # convert whole integer value to sequence of digits in output base
     result = []
