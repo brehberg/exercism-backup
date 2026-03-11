@@ -4,10 +4,11 @@ class BaseConverter
     raise ArgumentError.new "invalid output base" unless to_base >= 2
 
     # convert sequence of digits in input base to whole integer value
-    value = from_digits.each.with_index(1).reduce(0) { |sum, (d, i)|
-      raise ArgumentError.new "negative digits not allowed" unless d >= 0
-      raise ArgumentError.new "digit out of range" unless d < from_base
-      sum + d * from_base ** (from_digits.length - i)
+    value = from_digits.each.reduce(0) { |sum, digit|
+      raise ArgumentError.new "negative digits not allowed" unless digit >= 0
+      raise ArgumentError.new "digit out of range" unless digit < from_base
+      sum *= from_base
+      sum + digit
     }
 
     # convert whole integer value to sequence of digits in output base
